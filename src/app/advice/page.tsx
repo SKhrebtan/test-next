@@ -33,7 +33,6 @@ const handleRandomAdvice = () => {
       const {slip: {
         advice
       }} = await getData();
-      console.log(advice)
       setAdvices(advice);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -43,10 +42,9 @@ const handleRandomAdvice = () => {
   fetchData();
 }
   return (
-    <section className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Hello JokeApi</h1>
-    <button type="button" onClick={handleRandomAdvice}>Find Random Joke</button>
-      <p>{advices}</p>
+    <section className="flex flex-col items-center justify-center gap-4 p-4">
+    <button className="bg-green-500 hover:bg-blue-700 transition duration-300 ease-in-out text-white font-bold py-2 px-4 rounded-full" type="button" onClick={handleRandomAdvice}>Find Random Joke</button>
+      {advices && <p className="bg-yellow-100 rounded-lg p-8 mb-4 shadow-md text-gray-900 leading-7">{advices}</p>}
     </section>
   );
 };

@@ -17,12 +17,11 @@ type Joke = {
 };
 const JokeApi = () => {
   const [jokesApi, setJokesApi] = useState<Joke[]>([]);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
         const {jokes} = await getData();
-        console.log(jokes)
         setJokesApi(jokes);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -36,7 +35,6 @@ const handleRandomJoke = () => {
   const fetchData = async () => {
     try {
       const data = await getData('any', 1);
-      console.log(data)
       setJokesApi([data]);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -46,14 +44,13 @@ const handleRandomJoke = () => {
   fetchData();
 }
   return (
-    <section className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Hello JokeApi</h1>
-    <button type="button" onClick={handleRandomJoke}>Find Random Joke</button>
+    <section className="flex flex-col items-center justify-center gap-4 p-4">
+    <button className="bg-blue-500 hover:bg-blue-700 duration-300  text-white font-bold py-2 px-4 rounded-full" type="button" onClick={handleRandomJoke}>Find Random Joke</button>
         <ul>
         {jokesApi && jokesApi.length > 0 && jokesApi.map(({setup, delivery, id}) => 
-          <li key={id}>
-              <p>{setup}</p>
-              <p>{delivery}</p>
+          <li className="bg-gray-100 rounded-lg p-6 mb-4 shadow-md" key={id}>
+              <p className="text-2xl font-bold mb-4 text-blue-600">{setup}</p>
+              <p className="text-2xl font-bold mb-4 text-yellow-600">{delivery}</p>
           </li>
          )}
                </ul>

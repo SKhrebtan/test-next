@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { Navigation } from '../components/Navigation'
+import { Navigation } from '../../components/Navigation'
 
-export default function JokesApiLayout({
+export default function SingleGigById({
     children, // will be a page or nested layout
   }: {
     children: React.ReactNode
